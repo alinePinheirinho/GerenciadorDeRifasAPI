@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "7d59dace-f426-47f0-b11e-3858eea066c1",
+		"name": "gerenciador-rifa-colletion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastra Rifa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nome\": \"rifa do gabriel\",\r\n   \"descricao\": \"rifa do gabriel para viajar\",\r\n   \"imagem\": null,\r\n    \"dataSorteio\": \"06/04/2022\",\r\n   \"valor\": 10.0,\r\n   \"camposRifa\":[\r\n       {\"valorCampo\": \"1\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"2\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"3\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"4\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"5\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"6\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"7\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"8\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"9\", \"valor\": 10.0},\r\n       {\"valorCampo\": \"10\", \"valor\": 10.0}\r\n   ],\r\n   \"statusRifa\": \"INICIADA\",\r\n   \"proprietario\": {\r\n       \"nome\": \"gabriel\",\r\n       \"telefone\": \"981738888\"\r\n\r\n   },\r\n   \"quantidadeCampos\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rifa/cadastrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Rifa por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rifa/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Lista de Rifas por Proprietario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rifa/proprietario/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"proprietario",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todas as Rifas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rifa/todas?statusRifa=INICIADA&page=0&size=2&sort=id,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"todas"
+					],
+					"query": [
+						{
+							"key": "statusRifa",
+							"value": "INICIADA"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						},
+						{
+							"key": "sort",
+							"value": "id,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Compra Campos Rifa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n            {\r\n                \"id\": 5,\r\n                \"valorCampo\": \"1\",\r\n                \"valor\": 10.00,\r\n                \"comprador\": {\r\n                    \"nome\": \"aline\",\r\n                    \"telefone\": \"9988998899\"\r\n                }\r\n            },\r\n              {\r\n                \"id\": 7,\r\n                \"valorCampo\": \"3\",\r\n                \"valor\": 10.00,\r\n                \"comprador\": {\r\n                    \"nome\": \"aline\",\r\n                    \"telefone\": \"9988998899\"\r\n                }\r\n              },\r\n            \r\n              {\r\n                \"id\": 10,\r\n                \"valorCampo\": \"6\",\r\n                \"valor\": 10.00,\r\n                \"comprador\": {\r\n                    \"nome\": \"Luiz Miguel\",\r\n                    \"telefone\": \"9988998899\"\r\n                }\r\n            }\r\n        ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rifa/15/compraCampos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"15",
+						"compraCampos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirma Compra Campos Rifa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n            {\r\n                \"id\": 5\r\n            },\r\n              {\r\n                \"id\": 7\r\n                \r\n              },\r\n            \r\n              {\r\n                \"id\": 10\r\n              }\r\n        ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rifa/15/confirmaCompra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rifa",
+						"15",
+						"confirmaCompra"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -9,6 +9,7 @@ import br.com.pinheirostec.gerenciadorrifaonline.entity.Rifa;
 import br.com.pinheirostec.gerenciadorrifaonline.enums.StatusCampoRifa;
 import br.com.pinheirostec.gerenciadorrifaonline.enums.StatusRifa;
 import br.com.pinheirostec.gerenciadorrifaonline.exceptions.NegocioException;
+import br.com.pinheirostec.gerenciadorrifaonline.exceptions.NotFoundException;
 import br.com.pinheirostec.gerenciadorrifaonline.mapper.RifaMapper;
 import br.com.pinheirostec.gerenciadorrifaonline.repository.CampoRifaRepository;
 import br.com.pinheirostec.gerenciadorrifaonline.repository.CompradorRepository;
@@ -61,7 +62,7 @@ public class RifaServiceImpl implements RifaService {
     @Override
     public RifaDto buscaRifa(Long id) throws NegocioException {
         Rifa rifa = rifaRepository.findById(id)
-                .orElseThrow(() -> new NegocioException("Nao foi localizado uma Rifa cadastrada com o ID Informado. id= " + id));
+                .orElseThrow(() -> new NotFoundException("Nao foi localizado uma Rifa cadastrada com o ID Informado. id= " + id));
         List<CampoRifa> camposRifa = campoRifaRepository.findByRifa(rifa);
         return converteRifaDtoComCampos(rifa, camposRifa);
     }
